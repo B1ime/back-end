@@ -1,0 +1,20 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+
+branches:
+  only:
+  - master
+  - /^feature-.*$/
+
+install:
+  - npm install
+
+script:
+  - npm install -g serverless
+  - npm run lint
+  - npm run test
+  - if [ $TRAVIS_BRANCH == 'true' && ];
+      then npm run deploy:prod;
