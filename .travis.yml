@@ -18,8 +18,7 @@ branches:
   - /^feature-.*$/
 
 before_script:
-  - npm install -g serverless
-  - npm install -g typescript
+  - npm install serverless tslint typescript -g
 
 script:
   - npm run lint
