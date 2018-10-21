@@ -15,7 +15,7 @@ cache:
 branches:
   only:
   - master
-  - /^feature-.*$/
+  - develop
 
 before_script:
   - npm install serverless tslint typescript -g

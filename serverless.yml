@@ -3,15 +3,44 @@ service: B1ime # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  environment: ${file(./env/${opt:stage}.yml)}
+  environment: ${file(./env/${opt:stage, 'dev'}.yml)}
+
+plugins:
+  - serverless-offline
 
 package:
   artifact: dst.zip
 
 functions:
-  api:
-    handler: api.hello
+  login:
+    handler: src/api/users.login
+    events:
+      - http:
+          method: post
+          path: /login
+  hello:
+    handler: src/api.hello
     events:
       - http:
           method: get
           path: /
+
+resources:
+  Resources:
+    B1imeTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: B1imeTable
+        AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: name
+          AttributeType: S
+        KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+        - AttributeName: name
+          KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
