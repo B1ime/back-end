@@ -13,3 +13,12 @@ dst.zip
 # environment
 .env
 
+# ide and editor
+.idea/
+.vscode/
+
+# Local dynamodb
+.dynamodb/
+
+# Webpack build
+.webpack/
