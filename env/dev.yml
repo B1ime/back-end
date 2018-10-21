@@ -1,0 +1,2 @@
+SECRET_KEY: 'SECRET_KEY'
+DATABASE_HOST: 'http://localhost:8000'

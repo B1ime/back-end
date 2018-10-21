@@ -3,7 +3,7 @@ service: B1ime # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-  # environment: ${file(./env/${opt:stage, 'dev'}.yml)}
+  environment: ${file(./env/${opt:stage, 'dev'}.yml)}
 
 plugins:
   - serverless-offline
