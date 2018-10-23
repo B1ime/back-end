@@ -3,6 +3,9 @@ import * as JWT from "jsonwebtoken";
 import { B1imeUser } from "../../database/users";
 import { verifyToken } from "../../middleware/authentication";
 
+process.env.SECRET_KEY = "SECRET_KEY";
+process.env.ACCESS_TOKEN_PREFIX = "Bearer";
+
 const sampleUser: B1imeUser = {
   id: "1234",
   name: "이름"
