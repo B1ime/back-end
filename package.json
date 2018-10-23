@@ -8,6 +8,7 @@
     "build": "rm -Rf dst && tsc && cd src && find . -name '*.json' -type f -exec cp {} ../dst/{} \\; && cd ..",
     "pack": "rm -f dst.zip && cp package.json dst/package.json && (cp package-lock.json dst/ || true) && (cp .npmrc dst/.npmrc || true) && cd dst && npm install --cache=../.npm --production && zip -r ../dst.zip . ** && cd ..",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test": "ts-mocha -p tsconfig.json src/__test__/**/*.spec.ts --colors --full-trace",
     "deploy": "npm run build && npm run pack && serverless deploy",
     "deploy:prod": "npm run deploy -- -s prod",
     "info:prod": "sls info -s prod"
@@ -32,10 +33,14 @@
     "sinon": "^6.3.5"
   },
   "devDependencies": {
+    "@types/expect": "^1.20.3",
     "@types/jsonwebtoken": "^7.2.8",
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0",
     "prettier": "^1.14.3",
     "serverless-dynamodb-local": "^0.2.35",
     "serverless-offline": "^3.27.0",
+    "ts-mocha": "^2.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.1.3"
   }
