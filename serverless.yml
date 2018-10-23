@@ -13,17 +13,23 @@ package:
 
 functions:
   login:
-    handler: src/api/users.login
+    handler: dst/api/users.login
     events:
       - http:
           method: post
           path: /login
   hello:
-    handler: src/api.hello
+    handler: dst/api.hello
     events:
       - http:
           method: get
           path: /
+  test:
+    handler: dst/api.test
+    events:
+      - http:
+          method: get
+          path: /test
 
 resources:
   Resources:
