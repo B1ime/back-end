@@ -22,3 +22,6 @@ dst.zip
 
 # Webpack build
 .webpack/
+
+# Build File
+.build
