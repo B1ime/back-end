@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devstart": "SLS_DEBUG=* tsc && sls offline start",
+    "devstart": "npm run build && SLS_DEBUG=* tsc && sls offline start",
     "build": "rm -Rf dst && tsc && cd src && find . -name '*.json' -type f -exec cp {} ../dst/{} \\; && cd ..",
     "pack": "rm -f dst.zip && cp package.json dst/package.json && (cp package-lock.json dst/ || true) && (cp .npmrc dst/.npmrc || true) && cd dst && npm install --cache=../.npm --production && zip -r ../dst.zip . ** && cd ..",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
